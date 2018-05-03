@@ -203,6 +203,24 @@ Returns:
   FirmwareVolumesStr = (CHAR16 *) PcdGetPtr (PcdWinNtFirmwareVolume);
 
   SecPrint ("\nEDK II SEC Main NT Emulation Environment from www.TianoCore.org\n");
+    if(1){
+        int i;
+
+        SecPrint ("#############################################################################################\n");
+        SecPrint ("add \"/debug\" command line switch, to connect to the debugger at the very beginning of POST\n");
+        SecPrint ("#############################################################################################\n");
+
+        if(Argc > 1){
+            for(i = 1 ; i < Argc ; i++){
+                if(0 == strcmp("/debug", Argv[i])){
+                    SecPrint ("IF YOU WANT TO DEBUG:\n\t1. start the TASKMGR\n\t2. connect SecMain.exe to the debugger\n\t3. and press ENTER\notherwise press enter to continue...\n");
+                    getchar();
+                }
+            }
+        }
+    }
+
+
 
   //
   // Determine the first thread available to this process.
